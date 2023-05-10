@@ -3,9 +3,8 @@
 @section('content')
 <a href="{{ route('produksi.index') }}" class="btn btn-secondary">Daftar Produksi</a>
 
-<form action="" method="POST">
+<form action="{{ route('produksi.store') }}" method="POST">
   @csrf
-
   <div class="form-group mt-4">
     <label for="name">Kode Produk</label>
     <input type="text" id="kode_produk" name="kode_produk" class="form-control">
