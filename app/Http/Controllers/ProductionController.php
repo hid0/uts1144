@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Production;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,7 +9,7 @@ class ProductionController extends Controller
 {
 	public function index()
 	{
-		$products = Production::all();
+		$products = DB::table('produksi')->get();
 		return view('produksi.index', compact('products'));
 	}
 
@@ -59,7 +58,8 @@ class ProductionController extends Controller
 			'kode_produk' => $request->kode_produk,
 			'nama_produk' => $request->nama_produk,
 			'jumlah_produksi' => $request->jumlah_produksi,
-			'tanggal_produksi' => $request->tanggal_produksi
+			'tanggal_produksi' => $request->tanggal_produksi,
+			'updated_at' => now()
 		]);
 
 		return redirect(route('produksi.index'))->with('success', 'Produksi berhasil diedit.');
